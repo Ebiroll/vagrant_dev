@@ -64,7 +64,9 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    yum -y install kernel-devel kernel-headers dkms gcc gcc-c++ 
+    yum -y install epel-release 
+    yum -y install kernel-devel kernel-headers dkms gcc gcc-c++
+    yum groupinstall "Development Tools" -y 
     yum -y install openmotif-devel libxml2-devel gtk2-devel gtkglext-devel qt5-qtbase qt5-qtbase-devel ksh git makedepend qt qt-devel libsmi libsmi-devel poco-devel gcc-gnat
     yum -y install libXt-devel rpm-build cmake tar rsync createrepo systemtap csh emacs openssh-server openssl openssl-devel xterm lsof ntp
     systemctl enable ntpd
